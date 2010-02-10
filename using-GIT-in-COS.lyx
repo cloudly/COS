@@ -3,10 +3,10 @@
 \begin_document
 \begin_header
 \textclass ctex-article
-\options UTF8
+\options UTF8,adobefonts
 \use_default_options true
 \language chinese-simplified
-\inputencoding UTF8
+\inputencoding utf8-plain
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -57,35 +57,28 @@
 \end_layout
 
 \begin_layout Author
-肖楠
+谢益辉
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Email：road2stat@gmail.com；个人主页：http://www.road2stat.com
-\end_layout
+Email：
+\begin_inset CommandInset href
+LatexCommand href
+name "xie@yihui.name"
+target "xie@yihui.name"
+type "mailto:"
 
 \end_inset
 
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
+；个人主页：
+\begin_inset CommandInset href
+LatexCommand href
+target "http://yihui.name"
 
 \end_inset
 
- 谢益辉
-\begin_inset Foot
-status open
 
-\begin_layout Plain Layout
-Email：xie@yihui.name；个人主页：http://cos.name
 \end_layout
 
 \end_inset
