@@ -1,0 +1,15 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[report, Sweave.sty]{report (Sweave noweb)}
+#
+# What: literate-report textclass definition file.
+# Author: Gregor Gorjanc <gregor.gorjanc@bfro.uni-lj.si>
+# $Id: literate-report.layout 58 2007-01-02 00:41:59Z ggorjan $
+#
+# This is a copy of literate-report.layout from LyX, but changed for
+# Sweave - NoWeb syntax:
+#  - changed noweb.sty to Sweave.sty
+#  - moved preamble to literate-scrap.inc
+
+Format 2
+Input report.layout
+Input literate-scrap.inc
