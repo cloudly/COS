@@ -1,0 +1,341 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass ctexart
+\options UTF8,winfonts
+\use_default_options true
+\language english
+\inputencoding utf8-plain
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2.5cm
+\topmargin 3cm
+\rightmargin 2.5cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+简单的中文Git入门图解
+\begin_inset Newline newline
+\end_inset
+
+Guide For Simple Git use
+\end_layout
+
+\begin_layout Author
+Cloudly
+\end_layout
+
+\begin_layout Standard
+这份文档基于GitHub.com，是我在加入COS合作时候自己遇到的问题及对策的总结，希望对后来者有所帮助（至少不用向我一样对着电脑上命令行莫名其妙的发呆）。文档
+有很大一部分是来源于GitHub的官方指导，我所做的也只是把它简单的翻译为了中文，顺带加上了一些自己遇到的问题的解决办法。
+\end_layout
+
+\begin_layout Standard
+[
+\color red
+截图待添加
+\color inherit
+]
+\end_layout
+
+\begin_layout Section
+注册账号
+\end_layout
+
+\begin_layout Standard
+这一步是必须做的，也不用我多说什么。
+\end_layout
+
+\begin_layout Itemize
+首先在浏览器地址栏键入“
+\begin_inset CommandInset href
+LatexCommand href
+name "http://github.com/"
+target "http://github.com/"
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+，打开GitHub的官方网站。
+\end_layout
+
+\begin_layout Itemize
+然后找到右上角的“Login”，跳到登录页面并点击“Log in (Pricing and Signup)”。
+\end_layout
+
+\begin_layout Itemize
+选择第一个“Open Source Free! Signup”。
+\end_layout
+
+\begin_layout Itemize
+之后注册的详情我就不多说了，大家自己看着弄就可以了。
+\end_layout
+
+\begin_layout Section
+安装本地Git程序
+\end_layout
+
+\begin_layout Standard
+在网站建立好账户之后，就要开始配置本机的程序。下面仅针对Windows，使用Linux等系统的可以参见此页：
+\begin_inset CommandInset href
+LatexCommand href
+target "http://help.github.com/git-installation-redirect"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+安装msysgit，位于：
+\begin_inset CommandInset href
+LatexCommand href
+name "http://code.google.com/p/msysgit/"
+target "http://code.google.com/p/msysgit/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+在安装的过程中注意选择“Add Git Bush Here
+\begin_inset Quotes erd
+\end_inset
+
+和“Add Git GUI Here”，会方便许多。
+\end_layout
+
+\begin_layout Itemize
+安装完后，应该可以看到桌面上的图标（如果你有选择建立的话），此时右键单击任何一个文件夹都有看到菜单中的“Add Git Bush Here
+\begin_inset Quotes erd
+\end_inset
+
+和“Add Git GUI Here”的快捷命令。
+\end_layout
+
+\begin_layout Section
+登录并设置SSH
+\end_layout
+
+\begin_layout Standard
+这一步是建立一个身份，对于Git来说仅仅是一个账号还不足够。
+\end_layout
+
+\begin_layout Itemize
+回到登录页面，登入。
+\end_layout
+
+\begin_layout Itemize
+然后会自动跳转到你的管理面板。此时点击右上方导航条的“Account Settings ”。
+\end_layout
+
+\begin_layout Itemize
+有很多分页，你可以看着填填。
+\end_layout
+
+\begin_layout Itemize
+这个时候打开Git Bush，使用桌面上的快捷方式即可。
+\end_layout
+
+\begin_layout Itemize
+作为第一次使用的（备份就不讲了），我们需要键入
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+ssh-keygen -t rsa -C "tekkub@gmail.com" //其中后面的是你的邮件地址
+\end_layout
+
+\begin_layout Itemize
+问你存储地址的时候直接按回车就可以（千万别改这一步，要不会死活找不到密钥，我就总死在这里）。
+\end_layout
+
+\begin_layout Itemize
+问你passphrase的时候可以自己设定一个密码（随便，不一定和GitHub账号一致），需要自己记住。
+\end_layout
+
+\begin_layout Itemize
+按照窗口上提示的地址，找到id_rsa.pub这个文件，用文本编辑器（例如记事本）打开它，全选，复制。
+\end_layout
+
+\begin_layout Itemize
+回到你的浏览器，在刚才的页面选择SSH Public Keys分页，点击“Add another public key”（第一次可能只是Add），然后在弹出的小
+框框内分别指定一个名称（建议为email地址），并把刚才复制的那些东西粘贴在“Key”那个大框框里。再提交就可以了。
+\end_layout
+
+\begin_layout Itemize
+回到Git Bush，可以测试一下。输入命令ssh git@github.com，如果设置了passphrase的话会要你输入一下。
+\begin_inset Newline newline
+\end_inset
+
+如果返回类似“Hi tekkub! You've successfully authenticated, but GitHub does not
+ provide shell access.
+ Connection to github.com closed.”，则证明你成功了。
+\end_layout
+
+\begin_layout Section
+建立第一个项目 (repo)
+\end_layout
+
+\begin_layout Standard
+下面我们开始创建项目（Create a New Repository）。
+\end_layout
+
+\begin_layout Itemize
+回到GitHub的管理页面(
+\begin_inset CommandInset href
+LatexCommand href
+name "https://github.com/"
+target "https://github.com/"
+
+\end_inset
+
+)，然后会看到一则提示：
+\begin_inset Newline newline
+\end_inset
+
+Welcome to GitHub! What's next? 
+\begin_inset Newline newline
+\end_inset
+
+Create a Repository
+\end_layout
+
+\begin_layout Itemize
+然后点击这个链接，创建一个新项目。各个框自己看着填就可以。
+\end_layout
+
+\begin_layout Itemize
+创建成功后，回到我们的Windows。这个时候你需要建立一个文件夹或者在已有的文件夹准备存储本地文件（即本地的工作目录）。选好之后最简单的办法就是右键单击文件夹
+，并选择 
+\begin_inset Quotes eld
+\end_inset
+
+Git Bash Here
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+后面的操作可能用GUI界面也可以，但是我还没弄明白怎么用
+\end_layout
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Itemize
+在Git Bash的窗口里，按照建立好新项目后浏览器中的提示一步步操作：
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+git config --global user.name "xxx" 
+\end_layout
+
+\begin_layout Itemize
+git config --global user.email xxx@gmail.com
+\end_layout
+
+\begin_layout Itemize
+git init 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+然后比较省力的办法就是，先添加远程项目。这个时候建议转到Git GUI，会比较省心。右键工作目录，选择“Git GUI Here”。然后选择“远端（Remote
+）> Add”。名字随便输入一个，比如test，下面的location就得回到浏览器，找到上面的一行网址，类似于git@github.com:xxx/test.gi
+t。
+\end_layout
+
+\begin_layout Itemize
+接下来fetch不fetch都可以，因为接下来需要建立分支（Branch）。先在右边未缓存的改动那里选中readme文件（没有的话手动在文件夹里随便建一个文本文
+件，什么名字都可以），然后点击“提交 (commit) > 缓存为提交”（或者直接快捷键ctrl+T）。这个时候在右边“初始的提交描述”那里随便输点什么，比如t
+est。之后点击“提交”。这个时候点击“分支 (branch) > checkout
+\begin_inset Quotes erd
+\end_inset
+
+，之后直接点右下角的“checkout”。然后再点击“上传
+\begin_inset Quotes erd
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Itemize
+这个时候回到GitHub的页面，刷新一下，应该就可以看到我们的文件readme已经乖乖的躺在那里了。
+\end_layout
+
+\begin_layout Itemize
+以后如果该工作目录有任何改动，使用Git GUI后都会看到“未缓存的提交”那里已然出现，依次ctrl+T然后再右下角的“提交描述”那里写点什么。之后“提交”、“
+上传”就可以了
+\end_layout
+
+\begin_layout Section
+与别人合作
+\end_layout
+
+\begin_layout Standard
+前面的不牵扯其他人，所以工作起来比较的简单。但是这样多少显不出来Git这种分布式合作系统的意义了。
+\end_layout
+
+\begin_layout Standard
+
+\color red
+待续：forks、git clone
+\end_layout
+
+\end_body
+\end_document
